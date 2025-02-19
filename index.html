@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElevenLabs Chat</title>
+</head>
+<body>
+    <h1>ElevenLabs Voice AI</h1>
+    <input type="text" id="userInput" placeholder="Type your message">
+    <button onclick="sendMessage()">Send</button>
+    <p><strong>Response:</strong> <span id="response"></span></p>
+
+    <script>
+        async function sendMessage() {
+            const userMessage = document.getElementById("userInput").value;
+            const responseElem = document.getElementById("response");
+
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ message: userMessage })
+            });
+
+            const data = await response.json();
+            responseElem.innerText = data.response || "Error getting response";
+        }
+    </script>
+</body>
+</html>
