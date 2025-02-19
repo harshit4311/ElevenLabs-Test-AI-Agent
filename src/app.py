@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import requests
-from config import ELEVENLABS_API_KEY, ELEVENLABS_AGENT_ID
+from src.config import ELEVENLABS_API_KEY, ELEVENLABS_AGENT_ID
 # from redis_client import redis_client
 
 app = Flask(__name__)
